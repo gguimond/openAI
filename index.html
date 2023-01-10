@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>open ai fine tuned model demo</title>
     <script>
-      openAI = async () => {
+      async function openAI() {
         const response = await fetch("https://gyvoqgz1wa.execute-api.eu-west-3.amazonaws.com/default/openai", {
           method: "POST",
           headers: {
@@ -16,13 +16,15 @@
           body: JSON.stringify({ prompt: document.getElementById("textarea").value }),
         });
         document.getElementById("completion").innerHTML = response.json().completion;
-      };
+      }
     </script>
   </head>
   <body>
-    <label for="textarea">Prompt</label><br />
-    <textarea class="input" id="textarea" cols="30" rows="5"></textarea>
-    <button onclick="openAi()">OK</button>
+    <form>
+      <label for="textarea">Prompt</label><br />
+      <textarea class="input" id="textarea" cols="30" rows="5"></textarea>
+      <button onclick="openAi()">OK</button>
+    </form>
     <h1 id="completion">hockey</h1>
   </body>
 </html>
