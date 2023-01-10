@@ -13,6 +13,7 @@
             Accept: "application/json",
             "Content-Type": "application/json",
           },
+          mode: "cors",
           body: JSON.stringify({ prompt: document.getElementById("textarea").value }),
         });
         document.getElementById("completion").innerHTML = response.json().completion;
