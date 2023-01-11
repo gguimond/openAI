@@ -15,8 +15,7 @@
           },
           body: JSON.stringify({ prompt: document.getElementById("textarea").value }),
         });
-        console.log(response.json());
-        document.getElementById("completion").innerHTML = response.json().completion;
+        document.getElementById("completion").innerHTML = await response.json().completion;
       };
     </script>
   </head>
