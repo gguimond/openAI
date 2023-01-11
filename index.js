@@ -5,7 +5,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 exports.handler = async function(event, context) {
-  if (event.requestContext.http.method === 'OPTIONS') {
+  if (event.requestContext.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
       headers: {
