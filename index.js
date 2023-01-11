@@ -5,6 +5,17 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 exports.handler = async function(event, context) {
+  if (event.requestContext.http.method === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT"
+      },
+      body:JSON.stringify({}),
+    }
+  }
   const prompt = JSON.parse(event.body).prompt + '\n\n###\n\n'
   const response = await openai.createCompletion({
     model: "ada:ft-personal-2023-01-10-11-05-36",
@@ -15,7 +26,7 @@ exports.handler = async function(event, context) {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Headers" : "Accept,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+      "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT"
     },
