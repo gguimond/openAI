@@ -18,7 +18,7 @@ exports.handler = async function(event, context) {
   }
   const prompt = JSON.parse(event.body).prompt + '\n\n###\n\n'
   const response = await openai.createCompletion({
-    model: "ada:ft-personal-2023-01-10-11-05-36",
+    model: "ada:ft-personal-2023-01-12-10-07-22",
     prompt,
     temperature: 0,
     max_tokens: 1,

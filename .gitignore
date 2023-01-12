@@ -105,6 +105,6 @@ dist
 
 .key
 *.jsonl
-*.csv
+result.csv
 venv
 .ipynb_checkpoints
